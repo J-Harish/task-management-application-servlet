@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Edit Task - Task Management</title>
+</head>
+<body>
+    <h1>Edit Task</h1>
+    <form action="tasks" method="post">
+        <input type="hidden" name="action" value="update" />
+        <input type="hidden" name="id" value="" id="taskId" />
+        <label for="title">Title:</label><br/>
+        <input type="text" id="title" name="title" required /><br/><br/>
+        <label for="description">Description:</label><br/>
+        <textarea id="description" name="description"></textarea><br/><br/>
+        <label for="status">Status:</label><br/>
+        <select id="status" name="status">
+            <option value="pending">Pending</option>
+            <option value="in_progress">In Progress</option>
+            <option value="completed">Completed</option>
+        </select><br/><br/>
+        <button type="submit">Update Task</button>
+    </form>
+    <p><a href="tasks">Back to Tasks</a></p>
+
+    <script>
+        // Simple script to get task id from URL and set it in the form
+        const urlParams = new URLSearchParams(window.location.search);
+        const taskId = urlParams.get('id');
+        if (taskId) {
+            document.getElementById('taskId').value = taskId;
+            // In a real app, fetch task details via AJAX and populate fields
+            alert('Please manually fill the task details to update.');
+        } else {
+            alert('No task ID provided.');
+        }
+    </script>
+</body>
+</html>
